@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="theme-color" content="red">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./style.css">
 
 
-    
+
 </head>
 
 <body>
@@ -20,7 +20,8 @@
     </div>
     <header class="top">
 
-        <h1>Your Status</h1>
+
+
         <button id="navbutton">
             <div class="line"></div>
             <div class="line"></div>
@@ -28,6 +29,7 @@
 
         </button>
         <div id="fullscreen"><img src="./icon/fullscreen.png"></div>
+        <h1>Your Status</h1>
     </header>
     <div class="navbar">
         <ul>
@@ -47,6 +49,9 @@
             <div class="post">
                 <h2>love status- 1</h3>
                     <img src="./4307866.jpg">
+                    <div class="status">
+                        <h1>this is status</h1>
+                    </div>
                     <blockquote>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit soluta inventore
                         ea doloremque, minima, consequatur mollitia culpa nostrum possimus architecto illum nemo officia
@@ -54,7 +59,23 @@
                     </blockquote>
 
                     <button class="copy-hindi">copy hindi</button>
-                    <button>copy english</button>
+                    <button onclick="copy()">copy english</button>
+            </div>
+
+            <div class="post">
+                <h2>love status- 2</h3>
+                    <img src="./4307866.jpg">
+                    <div class="status">
+                        <h1>this is 2 status</h1>
+                    </div>
+                    <blockquote>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit soluta inventore
+                        ea doloremque, minima, consequatur mollitia culpa nostrum possimus architecto illum nemo officia
+                        <footer>— Crazy hunch-backed old guy from the movie Aladdin</footer>
+                    </blockquote>
+
+                    <button class="copy-hindi">copy hindi</button>
+                    <button onclick="copy()">copy english</button>
             </div>
 
 
@@ -99,6 +120,7 @@
         <li><a id="gmail" href=""><img src="./icon/gmail.svg"></a>
         <li><a id="twitter" href=""><img src="./icon/twitter.svg"></a>
         <li><a id="pinterest" href=""><img src="./icon/pinterest.svg"></a>
+            <li><a id="bookmark" href=""><img src="./icon/bookmark.svg"></a>
         </li>
 
         <!--
@@ -106,7 +128,7 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
     </ul>
 </div>
 <footer>
-    <p>powered by romantic status</p>
+    <p>powered by romantic status &copy;2020</p>
 
 </footer>
 <div class="gototop">
@@ -117,16 +139,26 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
         scrollFunction();
         scrolltopvisibility();
 
+
     };
+
+
 
     function scrollFunction() {
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             document.querySelector("header.top").style.position = "sticky";
             document.querySelector("header.top").style.top = "0";
+            document.querySelector("header.top").style.backgroundColor = "red";
+            document.querySelector("header.top").style.padding = "15px";
         } else {
             document.querySelector("header.top").style.position = "";
             document.querySelector("header.top").style.top = "-100px";
+            document.querySelector("header.top").style.backgroundColor = "#AA00FF";
+            document.querySelector("header.top").style.transition = "0.6s";
+            document.querySelector("header.top").style.padding = "10px";
+
         }
+
     }
 
     function scrolltopvisibility() {
@@ -160,37 +192,43 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
     //facebbok
     var shareBonus = 'Thank you so much to share .....'
     var currentUrl = window.location.href;
-    var title=window.document.title;
+    var title = window.document.title;
     var facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
     var twitterShareUrl = `https://twitter.com/intent/tweet?url=${currentUrl}`;
     var pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${currentUrl}&media=&description=`;
     var linkedinShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${title}&summary=&source=${currentUrl}`;
     var gmailShareUrl = `mailto:info@example.com?&subject=${title}&body=${currentUrl}`;
-    var telegramShareUrl = `https://t.me/share/${telegramShareUrl}`;
+    var telegramShareUrl = `https://t.me/share/url?url=${currentUrl}&text=${title}`;
     var messengerShareUrl = `fb-messenger://share?link=${currentUrl}`;
-    var whatsappShareUrl = `https://wa.me/?text=${currentUrl}%20from%20Forward%20Action`;
-    var textmessageShareUrl=`sms:mobilenumber?body=${currentUrl}`
-    var instaShareUrl=`https://msng.link/o/?&url=${currentUrl}`
+    var whatsappShareUrl = `https://api.whatsapp.com/send?&text=${title}%20${currentUrl}`;
+    var textmessageShareUrl = `sms:mobilenumber?body=${currentUrl}`
+    var instaShareUrl = `https://msng.link/o/?&url=${currentUrl}`
+    var hashtags=`love_status,romantic_status`
+    var bookmarkUrl=`https://www.google.com/bookmarks/mark?op=edit&bkmk=${currentUrl}&title=${title}&annotation=${title}&labels=${hashtags}`
 
 
-    var messsage=document.querySelector('.message');
-    function fadeOut(){
-     messsage.style.display='none';
-     messsage.style.opacity='0';
+    var messsage = document.querySelector('.message');
+    function fadeOut() {
+        messsage.style.display = 'none';
+        messsage.style.opacity = '0';
+        document.querySelector('.post .status').style.backgroundColor = ''
 
     }
-    function fadeIn(){
-        messsage.style.display="block";
-        messsage.style.opacity="1";
-        messsage.style.width="80%";
-        messsage.innerHTML=shareBonus
+    function fadeIn() {
+        messsage.style.display = 'block';
+        messsage.style.transition = '0.6s linear';
+        messsage.style.opacity = "1";
+        messsage.style.width = "80%";
+        messsage.style.height = "auto";
+
+        messsage.innerHTML = shareBonus
     }
-    
+
     document.getElementById('facebook').onclick = function (e) {
         e.preventDefault();
         window.open(facebookShareUrl, "_blank");
         fadeIn();
-        setTimeout(fadeOut,4000)
+        setTimeout(fadeOut, 4000)
 
     }
 
@@ -231,41 +269,59 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
         alert(shareBonus);
 
     }
-    document.getElementById('instagram').onclick=function(e){
+    document.getElementById('instagram').onclick = function (e) {
         e.preventDefault();
-        window.open(instaShareUrl,"_blank");
+        window.open(instaShareUrl, "_blank");
         alert(shareBonus)
     }
-    document.getElementById('twitter').onclick=function(e){
+    document.getElementById('twitter').onclick = function (e) {
         e.preventDefault();
-        window.open(twitterShareUrl,"_blank");
+        window.open(twitterShareUrl, "_blank");
+        alert(shareBonus)
+    }
+    document.getElementById('bookmark').onclick = function (e) {
+        e.preventDefault();
+        window.open(bookmarkUrl, "_blank");
         alert(shareBonus)
     }
 
-    document.getElementById('pinterest').onclick=function(e){
+    document.getElementById('pinterest').onclick = function (e) {
         e.preventDefault();
-        window.open(pinterestShareUrl,"_blank");
+        window.open(pinterestShareUrl, "_blank");
         alert(shareBonus)
     }
 
-   document.getElementById('fullscreen').onclick=function(){
-       
-       var elem=document.documentElement;
-    if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
+    document.getElementById('fullscreen').onclick = function () {
 
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  }
-   }
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
 
 
-
+    /////////////copy on click///////////////////////
+    function copy() {
+        var inp = document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value = document.querySelector('.post .status').textContent;
+        document.querySelector('.post .status').style.backgroundColor = 'rgba(255, 246, 143, 0.7)'
+        inp.select();
+        document.execCommand('copy', false);
+        inp.remove();
+        messsage.textContent = 'status copied';
+        this.innerHTML = 'copied';
+        fadeIn();
+        setTimeout(fadeOut, 1000);
+    }
 
 </script>
 
