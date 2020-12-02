@@ -234,13 +234,14 @@ footer p{text-align: center;}
     margin: auto;
     background: #003333;
     color: #ffffff;
-    padding: 15px 10px;
+    padding: 15px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 20px;
     position: sticky;
     bottom: 0;
+    
 
 }
 
