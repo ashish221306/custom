@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Status | share with your friends....</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="red">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+html{scroll-behavior: smooth;}
+img{max-width: 100%;}
+.container {
+
+    display: flex;
+    padding: 20px 0;
+
+
+}
+.message{
+    padding: 20px 10px;
+    position: fixed;
+    width: 80%;
+    top: 100px;
+    border: 2px solid #000000;
+    left: 50%;
+    transform: translate(-50%,-20%);
+    z-index: 743678586;
+    background: red;
+    text-align: center;
+    width: 0%;
+    transition: width 0.5s linear;
+    display: none;
+}
+.message:hover{
+    width: 100%;
+}
+.messageAnimate{
+    width: 100%;
+}
+body {
+    background: #69F0AE;
+    
+}
+
+.container .sidebar {
+    flex: 25%;
+    padding: 10px;
+    position: sticky;
+    top: 100px;
+    justify-content: flex-start;
+    
+}
+
+
+
+/*navbutton*/
+#navbutton {
+    
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    cursor: pointer;
+    outline: none;
+    padding: 20px;
+    border: none;
+    background: transparent;
+    
+
+}
+ #navbutton .line{width: 30px;
+        height: 3px;
+    background: #f1f1f1;
+       margin: 5px;
+   }
+
+
+.container .main {
+    flex: 75%;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content:flex-start;
+    padding: 10px;
+
+}
+
+header.top {
+    padding: 20px;
+    background: #AA00FF;
+    text-align: center;
+    box-shadow: 0px 0px 3px 1px #777;
+    z-index: 67523;
+
+
+    /* Make it stick/fixed */
+    top: -100px;
+    /* Hide the navbar 50 px outside of the top view */
+    width: 100%;
+    /* Full width */
+    transition: top 0.3s;
+    /* Transition effect when sliding down (and up) */
+}
+
+header.top h1 {
+    color: aliceblue;
+    text-shadow: 2px 2px 2px rgb(240, 34, 212);
+}
+
+
+/*post*/
+.main .post {
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+    position: relative;
+     box-shadow: 0px 0px 6px 2px #333;
+    
+    border-radius: 10px;
+   
+    
+
+}
+
+.main .post:hover {
+    cursor: pointer;
+
+    transition: 0.6s
+}
+
+/*breadcrumb*/
+.breadcrumb {
+    padding: 10px;
+    display: NONE;
+    color: aliceblue;
+    font-size: 20px
+}
+
+.breadcrumb a {
+    padding: 10px 15px
+}
+
+.main .post button {
+    position: absolute;
+    outline: none;
+    right: 50%;
+    bottom: 0;
+    cursor: pointer;
+    transform: translate(50%, 0%);
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.7),-3px -3px 5px rgba(255,255,255,0.3);
+
+
+}
+.main .post button:active{
+    box-shadow:inset 3px 3px 5px rgba(0,0,0,0.7),inset -3px -3px 5px rgba(255,255,255,0.3);
+}
+
+.post button {
+    padding: 15px 30px;
+    color: aliceblue;
+    background: #9900FF;
+    
+    font-size: 19px
+}
+
+.post button:hover {
+    background: #6600FF;
+    
+    transition: 0.5s;
+
+}
+
+.category {
+    list-style: none
+}
+
+.category li {
+   margin-top: 10px;
+    padding: 10px 0px;
+    border-bottom: 2px solid green;
+}
+
+.category li:hover a{
+    transition: 0.6s;
+    text-align: center;
+}
+
+.category li a {
+    text-decoration: none;
+    padding: 10px 0px;
+    color:  #003333;
+    font-size: 18px;
+    transition:0.6s linear;
+}
+
+footer {
+    background: #7C4DFF;
+    color: aliceblue;
+    padding: 30px 10px;
+    box-shadow: 0px 0px 2px 1px #666666;
+}
+.share{
+    width: 100%;
+    margin: auto;
+    background: #003333;
+    color: #ffffff;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: sticky;
+    bottom: 0;
+}
+.share ul{list-style: none;}
+.share ul li{display: inline-block;margin-left: 10px;}
+.share ul li:hover  a img{transform: scale(1.2);transition: 0.3s ease-in;}
+.share ul li a{padding: 10px 20px;}
+.share ul li a img{height: 36px;width: 36px;}
+@media screen and (min-width:700px){
+    .share p{display: inline-block;}
+.share b span{font-size: 30px;}
+}
+
+@media screen and (max-width:600px) {
+    .container {
+        flex-direction: column;
+    }
+    .share{flex-direction: column;}
+    .share ul li a img{height: 20px;width: 20px;}
+    .share ul li{display: inline-block;margin-left:3px;}
+
+.share ul li a{padding: 6px}
+
+    .container .sidebar {
+        flex: 100%;
+
+    }
+
+    .container .main {
+        flex: 100%
+    }
+
+    .main .post {
+        width: 100%
+    }
+
+    header.top {
+        position: sticky;
+        top: 0;
+        z-index: 100
+    }
+
+}
+
+
+
+.gototop {
+    
+    background: #4A148C;
+    display: inline-block;
+    color: #f1f1f1;
+    position: fixed;
+    padding: 16px 32px;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 3px #ffffff;
+    user-select: none;
+    opacity: 0;
+    transition:0.6s linear;
+}
+
+
+.newsletter {
+    border: 2px solid red;
+    padding: 20px 10px;
+    margin-top: 20px;
+    font-size: 18px
+}
+
+.newsletter input {
+    padding: 10px;
+    cursor: pointer
+}
+
+.navbar {
+    height: 0;
+    
+    width: 0;
+    overflow: hidden;
+    background: #D500F9;
+    position: relative;
+
+
+}
+
+.navbar ul {
+    list-style: none
+}
+
+.navbar ul li {
+    display: block;
+
+    border-bottom: 1px solid #ffffff;
+
+}
+
+.navbar ul li:hover a {
+    transform: translateX(30px);
+    transition:0.6s ease-in-out;
+    
+    
+    
+}
+
+.navbar ul li a {
+    padding: 20px 15px;
+    text-decoration: none;
+    color: aliceblue;
+    display: block;
+    font-weight: 700;
+}
+
+.show {
+    transition: 0.4s ease;
+    height: 900px;
+    width: 100%;
+
+
+}
+
+@media screen and (max-width: 600px) {
+    #navbutton {
+        padding: 10px 15px;
+        left: 0px;
+        top: 10px;
+
+
+
+    }
+
+    .top {
+        align-items: center;
+    }
+
+    .top h1 {
+        text-align: right;
+    }
+}
+@media screen and (max-width:700px) {
+    .container {
+        flex-direction: column;
+    }
+.gototop{
+    bottom: 100px;
+}
+
+}
+.copy{padding: 200px;}
+    </style>
+</head>
+
+<body>
+    <div class="message">
+        <b>status copied</b>
+    </div>
+    <header class="top">
+
+        <h1>Your Status</h1>
+        <button id="navbutton">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+
+        </button>
+
+    </header>
+    <div class="navbar">
+        <ul>
+            <li><a href="">status </a></li>
+            <li><a href="">shayari</a></li>
+            <li><a href="">love status</a></li>
+            <li><a href="">status </a></li>
+        </ul>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="">home</a>/<a href="">home</a>/<a href="">home</a>
+    </div>
+    <div class="container">
+
+        <div class="main">
+            <div class="post">
+                <h2>love status- 1</h3>
+                    <img src="./4307866.jpg">
+                    <blockquote>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit soluta inventore
+                        ea doloremque, minima, consequatur mollitia culpa nostrum possimus architecto illum nemo officia
+                        <footer>— Crazy hunch-backed old guy from the movie Aladdin</footer>
+                    </blockquote>
+
+                    <button class="copy-hindi">copy hindi</button>
+                    <button>copy english</button>
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <div class="sidebar">
+            <ul class="category">
+                <h2>Category</h2>
+                <span></span>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+                <li><a href="">Love Status</a></li>
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
+</body>
+<div class="share">
+    <b>share it </span>&rarr;</span></b>
+    <ul>
+        <li><a id="facebook" href=""><img src="./icon/facebook.svg"></a></li>
+        <li><a id="instagram" href=""><img src="./icon/instagram.svg"></a></li>
+        <li><a id="messenger" href=""><img src="./icon/messenger .svg"></a></li>
+        <li><a id="whatsapp" href=""><img src="./icon/whatsapp.svg"></a></li>
+        <li><a id="telegram" href=""><img src="./icon/telegram.svg"></a></li>
+        <li><a id="gmail" href=""><img src="./icon/gmail.svg"></a>
+        <li><a id="twitter" href=""><img src="./icon/twitter.svg"></a>
+        <li><a id="pinterest" href=""><img src="./icon/pinterest.svg"></a>
+        </li>
+
+        <!--
+javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.location.href)}-->
+    </ul>
+</div>
+<footer>
+    <p>powered by romantic status</p>
+
+</footer>
+<div class="gototop">
+    <b>top</b>
+</div>
+<script>
+    window.onscroll = function () {
+        scrollFunction();
+        scrolltopvisibility();
+
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.querySelector("header.top").style.position = "sticky";
+            document.querySelector("header.top").style.top = "0";
+        } else {
+            document.querySelector("header.top").style.position = "";
+            document.querySelector("header.top").style.top = "-100px";
+        }
+    }
+
+    function scrolltopvisibility() {
+        if (document.body.scrollTop > 170 || document.documentElement.scrollTop > 170) {
+            document.querySelector('div.gototop').style.display = "block";
+            document.querySelector('.gototop').style.opacity = "1";
+
+            document.querySelector('div.gototop').style.transition = "0.6s linear";
+        } else {
+            document.querySelector('.gototop').style.display = "none"
+            document.querySelector('.gototop').style.opacity = "0"
+
+
+        }
+
+    }
+    document.querySelector('#navbutton').onclick = function () {
+        document.querySelector('div.navbar').classList.toggle('show');
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    document.querySelector('.gototop').addEventListener('click', function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+
+    })
+
+    //share buttons//
+
+    //facebbok
+    var shareBonus = 'Thank you so much to share .....'
+    var currentUrl = window.location.href;
+    var title=window.document.title;
+    var facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+    var twitterShareUrl = `https://twitter.com/intent/tweet?url=${currentUrl}`;
+    var pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${currentUrl}&media=&description=`;
+    var linkedinShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${title}&summary=&source=${currentUrl}`;
+    var gmailShareUrl = `mailto:info@example.com?&subject=${title}&body=${currentUrl}`;
+    var telegramShareUrl = `https://t.me/share/${telegramShareUrl}`;
+    var messengerShareUrl = `fb-messenger://share?link=${currentUrl}`;
+    var whatsappShareUrl = `https://wa.me/?text=${currentUrl}%20from%20Forward%20Action`;
+    var textmessageShareUrl=`sms:mobilenumber?body=${currentUrl}`
+    var instaShareUrl=`https://msng.link/o/?&url=${currentUrl}`
+
+
+    var messsage=document.querySelector('.message');
+    function fadeOut(){
+     messsage.style.display='none';
+     messsage.style.opacity='0';
+
+    }
+    function fadeIn(){
+        messsage.style.display="block";
+        messsage.style.opacity="1";
+        messsage.style.width="80%";
+        messsage.innerHTML=shareBonus
+    }
+    
+    document.getElementById('facebook').onclick = function (e) {
+        e.preventDefault();
+        window.open(facebookShareUrl, "_blank");
+        fadeIn();
+        setTimeout(fadeOut,4000)
+
+    }
+
+    // document.getElementById('linkedin').onclick = function (e) {
+    //     e.preventDefault();
+    //     window.open(linkedinShareUrl, "_blank");
+    //     alert(shareBonus);
+
+    // }
+    // document.getElementById('pinterest').onclick = function (e) {
+    //     e.preventDefault();
+    //     window.open(pinterestShareUrl, "_blank");
+    //     alert(shareBonus);
+
+    // }
+    document.getElementById('whatsapp').onclick = function (e) {
+        e.preventDefault();
+        window.open(whatsappShareUrl, "_blank");
+        fadeIn();
+
+    }
+    document.getElementById('messenger').onclick = function (e) {
+        e.preventDefault();
+        window.open(messengerShareUrl, "_blank");
+        alert(shareBonus);
+
+    }
+    document.getElementById('gmail').onclick = function (e) {
+        e.preventDefault();
+        window.open(gmailShareUrl, "_blank");
+        alert(shareBonus);
+
+    }
+
+    document.getElementById('telegram').onclick = function (e) {
+        e.preventDefault();
+        window.open(telegramShareUrl, "_blank");
+        alert(shareBonus);
+
+    }
+    document.getElementById('instagram').onclick=function(e){
+        e.preventDefault();
+        window.open(instaShareUrl,"_blank");
+        alert(shareBonus)
+    }
+    document.getElementById('twitter').onclick=function(e){
+        e.preventDefault();
+        window.open(twitterShareUrl,"_blank");
+        alert(shareBonus)
+    }
+
+    document.getElementById('pinterest').onclick=function(e){
+        e.preventDefault();
+        window.open(pinterestShareUrl,"_blank");
+        alert(shareBonus)
+    }
+
+
+
+
+
+
+</script>
+
+</html>
