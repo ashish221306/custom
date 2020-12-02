@@ -185,13 +185,13 @@ header.top h1 {
 .post button {
     padding: 15px 30px;
     color: aliceblue;
-    background: #9900FF;
+    background: #00695c;
 
     font-size: 19px
 }
 
 .post button:hover {
-    background: #6600FF;
+    background: #003333;
 
     transition: 0.5s;
 
@@ -203,10 +203,16 @@ header.top h1 {
 
 .category li {
     margin-top: 10px;
-    padding: 10px 0px;
+    padding: 17px 0px;
+    background: #00695c;
     border-bottom: 2px solid green;
 }
-
+ul.category li svg{height: 20px;width: 20px;}
+ul.category li::before{
+    content: '';
+    background: red;
+    
+}
 .category li:hover a {
     transition: 0.6s;
     text-align: center;
@@ -214,8 +220,8 @@ header.top h1 {
 
 .category li a {
     text-decoration: none;
-    padding: 10px 0px;
-    color: #003333;
+    padding: 10px 10px;
+    color: #ffffff;
     font-size: 18px;
     transition: 0.6s linear;
 }
@@ -328,7 +334,7 @@ footer p{text-align: center;}
 
 .gototop {
 
-    background: #4A148C;
+    background: #00695c;
     display: inline-block;
     color: #f1f1f1;
     position: fixed;
