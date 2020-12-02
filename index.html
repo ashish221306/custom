@@ -226,9 +226,22 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
 
     document.getElementById('facebook').onclick = function (e) {
         e.preventDefault();
-        window.open(facebookShareUrl, "_blank");
-        fadeIn();
-        setTimeout(fadeOut, 4000)
+        // window.open(whatsappShareUrl, "_blank");
+        // fadeIn();
+
+
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                url: facebookShareUrl
+            }).then(() => {
+                fadeIn();
+            })
+                .catch(console.error);
+        } else {
+            window.open(whatsappShareUrl, "_blank")
+        }
+
 
     }
 
