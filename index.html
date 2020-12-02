@@ -120,7 +120,7 @@
         <li><a id="gmail" href=""><img src="./icon/gmail.svg"></a>
         <li><a id="twitter" href=""><img src="./icon/twitter.svg"></a>
         <li><a id="pinterest" href=""><img src="./icon/pinterest.svg"></a>
-            <li><a id="bookmark" href=""><img src="./icon/bookmark.svg"></a>
+        <li><a id="bookmark" href=""><img src="./icon/bookmark.svg"></a>
         </li>
 
         <!--
@@ -148,12 +148,12 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             document.querySelector("header.top").style.position = "sticky";
             document.querySelector("header.top").style.top = "0";
-            document.querySelector("header.top").style.backgroundColor = "red";
+            document.querySelector("header.top").style.backgroundColor = "#00695f";
             document.querySelector("header.top").style.padding = "15px";
         } else {
             document.querySelector("header.top").style.position = "";
             document.querySelector("header.top").style.top = "-100px";
-            document.querySelector("header.top").style.backgroundColor = "#AA00FF";
+            document.querySelector("header.top").style.backgroundColor = "#009688";
             document.querySelector("header.top").style.transition = "0.6s";
             document.querySelector("header.top").style.padding = "10px";
 
@@ -203,8 +203,8 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
     var whatsappShareUrl = `https://api.whatsapp.com/send?&text=${title}%20${currentUrl}`;
     var textmessageShareUrl = `sms:mobilenumber?body=${currentUrl}`
     var instaShareUrl = `https://msng.link/o/?&url=${currentUrl}`
-    var hashtags=`love_status,romantic_status`
-    var bookmarkUrl=`https://www.google.com/bookmarks/mark?op=edit&bkmk=${currentUrl}&title=${title}&annotation=${title}&labels=${hashtags}`
+    var hashtags = `love_status,romantic_status`
+    var bookmarkUrl = `https://www.google.com/bookmarks/mark?op=edit&bkmk=${currentUrl}&title=${title}&annotation=${title}&labels=${hashtags}`
 
 
     var messsage = document.querySelector('.message');
@@ -226,22 +226,9 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
 
     document.getElementById('facebook').onclick = function (e) {
         e.preventDefault();
-        // window.open(whatsappShareUrl, "_blank");
-        // fadeIn();
-
-
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                url: facebookShareUrl
-            }).then(() => {
-                fadeIn();
-            })
-                .catch(console.error);
-        } else {
-            window.open(whatsappShareUrl, "_blank")
-        }
-
+        window.open(facebookShareUrl, "_blank");
+        fadeIn();
+        setTimeout(fadeOut, 4000)
 
     }
 
@@ -258,9 +245,14 @@ javascript:{window.location=’https://wa.me/?text='+encodeURIComponent(window.l
 
     // }
     document.getElementById('whatsapp').onclick = function (e) {
-        e.preventDefault();
+         e.preventDefault();
         window.open(whatsappShareUrl, "_blank");
         fadeIn();
+
+
+       
+
+
 
     }
     document.getElementById('messenger').onclick = function (e) {
