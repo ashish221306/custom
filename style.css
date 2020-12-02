@@ -115,7 +115,7 @@ body {
 
 header.top {
     padding: 10px;
-    background: #AA00FF;
+    background: #009688;
     text-align: center;
     box-shadow: 0px 0px 3px 1px #777;
     z-index: 67523;
@@ -140,7 +140,7 @@ header.top h1 {
 /*post*/
 .main .post {
     width: 400px;
-    margin: 10px;
+    margin: 30px 10px;
     padding: 10px;
     font-size: 18px;
     position: relative;
@@ -221,7 +221,7 @@ header.top h1 {
 }
 
 footer {
-    background: #7C4DFF;
+    background: #00695c;
     color: aliceblue;
     padding: 30px 10px;
     box-shadow: 0px 0px 2px 1px #666666;
@@ -360,7 +360,7 @@ footer p{text-align: center;}
 
     width: 0;
     overflow: hidden;
-    background: #D500F9;
+    background: #33ab9f;
     position: relative;
 
 
