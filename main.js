@@ -7,16 +7,20 @@ window.onscroll = function () {
 
 function scrollFunction() {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        
         document.querySelector("header.top").style.position = "sticky";
         document.querySelector("header.top").style.top = "0";
         document.querySelector("header.top").style.backgroundColor = "#00695f";
-        document.querySelector("header.top").style.padding = "15px";
+        document.querySelector("header.top").style.padding = "10px";
     } else {
+        
         document.querySelector("header.top").style.position = "";
         document.querySelector("header.top").style.top = "-100px";
+        
+        
         document.querySelector("header.top").style.backgroundColor = "#009688";
         document.querySelector("header.top").style.transition = "0.6s";
-        document.querySelector("header.top").style.padding = "10px";
+        document.querySelector("header.top").style.padding = "12px";
 
     }
 
@@ -26,8 +30,7 @@ function scrolltopvisibility() {
     if (document.body.scrollTop > 170 || document.documentElement.scrollTop > 170) {
         document.querySelector('div.gototop').style.display = "block";
         document.querySelector('.gototop').style.opacity = "1";
-
-        document.querySelector('div.gototop').style.transition = "0.6s linear";
+       document.querySelector('div.gototop').style.transition = "0.6s linear";
     } else {
         document.querySelector('.gototop').style.display = "none"
         document.querySelector('.gototop').style.opacity = "0"
@@ -188,3 +191,16 @@ function copy() {
 $('.post button').click(function(){
 $('.message').fadeIn();
 })
+
+
+    $('.category li').prepend('<i class="fa fa-hand-o-right"></i>')
+    $('.download').click(function(){
+      var src=$(this).prev().attr('src');
+      $(this).attr('download','')
+      $(this).attr('href',src)
+    
+    })
+    $('.main img').click(function(){
+        window.location.href=$(this).attr('src')
+    })
+
