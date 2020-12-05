@@ -1,29 +1,40 @@
 window.onscroll = function () {
-    scrollFunction();
+    
     scrolltopvisibility();
+  
+    
+
 };
 
 
-
-function scrollFunction() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        
-        document.querySelector("header.top").style.position = "sticky";
+var prevScrollpos = window.pageYOffset;
+window.onscroll=function(){
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+       
+       
         document.querySelector("header.top").style.top = "0";
         document.querySelector("header.top").style.backgroundColor = "#00695f";
         document.querySelector("header.top").style.padding = "10px";
+        document.querySelector("header.top").style.opacity = "1";
+        document.querySelector("header.top").style.transition = "1s";
+        $('.share').fadeOut()
+
     } else {
         
-        document.querySelector("header.top").style.position = "";
-        document.querySelector("header.top").style.top = "-100px";
-        
-        
+        document.querySelector("header.top").style.top = "-150px";
         document.querySelector("header.top").style.backgroundColor = "#009688";
         document.querySelector("header.top").style.transition = "0.6s";
         document.querySelector("header.top").style.padding = "12px";
+        document.querySelector("header.top").style.opacity = "0";
+        $('.share').fadeIn('slow')
+
+        
+        
+
 
     }
-
+    prevScrollpos = currentScrollPos;
 }
 
 function scrolltopvisibility() {
@@ -41,6 +52,9 @@ document.querySelector('#navbutton').onclick = function () {
     document.querySelector('div.navbar').classList.toggle('show');
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+if(document.querySelector('.search-container').classList.contains('showSearchContainer')){
+    document.querySelector('.search-container').classList.remove('showSearchContainer')
+}
 }
 
 document.querySelector('.gototop').addEventListener('click', function () {
@@ -109,6 +123,7 @@ document.getElementById('whatsapp').onclick = function (e) {
     e.preventDefault();
     window.open(whatsappShareUrl, "_blank");
     fadeIn();
+    fadeOut();
 
 
 
@@ -173,7 +188,7 @@ document.getElementById('fullscreen').onclick = function () {
     }
 }
 
-
+        
 /////////////copy on click///////////////////////
 function copy() {
     var inp = document.createElement('input');
@@ -193,6 +208,7 @@ $('.message').fadeIn();
 })
 
 
+   $(document).ready(function(){
     $('.category li').prepend('<i class="fa fa-hand-o-right"></i>')
     $('.download').click(function(){
       var src=$(this).prev().attr('src');
@@ -201,6 +217,14 @@ $('.message').fadeIn();
     
     })
     $('.main img').click(function(){
-        window.location.href=$(this).attr('src')
+       // window.location.href=$(this).attr('src')
     })
+    $('img').attr('loading','lazy')
+   })
 
+document.querySelector('#searchButton').addEventListener('click',function(e){
+e.preventDefault();
+var x=document.querySelector('.search-container');
+x.classList.toggle('showSearchContainer');
+
+})
