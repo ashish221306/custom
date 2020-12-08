@@ -228,3 +228,13 @@ var x=document.querySelector('.search-container');
 x.classList.toggle('showSearchContainer');
 
 })
+
+function curentlyReading(){
+    setInterval(() => {
+        var spanNumber=document.getElementById('viewer')
+        var number=Math.floor(Math.random()*10000)+3;
+        spanNumber.innerHTML='<i class="fa fa-eye"> '+number;
+    
+    },5000)
+}
+curentlyReading()
