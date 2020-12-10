@@ -233,6 +233,7 @@ header.top b {
     overflow: hidden;
     background: #003333;
     color: #f1f1f1;
+	min-height:300px;
 }
 
 .main .blog-post{
