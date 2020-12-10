@@ -229,6 +229,11 @@ x.classList.toggle('showSearchContainer');
 
 })
 
+function change(){
+var x=document.querySelector('#theme').value;
+    document.querySelector('.top').style.backgroundColor=x
+} 
+
 function curentlyReading(){
     setInterval(() => {
         var spanNumber=document.getElementById('viewer')
@@ -238,3 +243,5 @@ function curentlyReading(){
     },5000)
 }
 curentlyReading()
+
+
